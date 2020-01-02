@@ -1,5 +1,5 @@
 ***************
-研究兴趣(Researching)
+研究兴趣(Researc)
 ***************
 
 数据分析(DataAnalysis)
