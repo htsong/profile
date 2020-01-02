@@ -1,6 +1,0 @@
-Authors
--------
- 
-* htsong
-* abc
-* def
