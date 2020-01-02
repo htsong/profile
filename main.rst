@@ -1,23 +1,3 @@
-Welcome to Read the Docs Template's documentation!
-==================================================
-
-Contents:
-
-.. toctree::
-   :maxdepth: 2
-   :glob:
-
-   *
-
-
-
-索引和搜索 (Indices and Serach)
-==================
-
-* :ref:`genindex` 
-* :ref:`modindex`
-* :ref:`search`
-
 
 ***************
 个人信息(Who am I)
