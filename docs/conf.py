@@ -28,7 +28,8 @@ import os
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinx.ext.graphviz','matplotlib.sphinxext.plot_directive']
+# extensions = ['sphinx.ext.graphviz','matplotlib.sphinxext.plot_directive']
+extensions = ['sphinx.ext.graphviz']
 
 # 设置 graphviz_dot 路径
 graphviz_dot = 'dot'
@@ -43,16 +44,16 @@ graphviz_output_format = 'svg'
 # https://learn-rst.readthedocs.io/zh_CN/latest/matplotlib.html
 #
 # 在每幅matplotlib图的代码中都会首先执行的代码, 设置后将不需要在代码中重复书写
-plot_pre_code = """
-import numpy as np
-import matplotlib.pyplot as plt
-"""
+# plot_pre_code = """
+# import numpy as np
+# import matplotlib.pyplot as plt
+# """
 
 # 设置每幅图的 :include-source: 选项的默认值
-plot_include_source = False
+# plot_include_source = False
 
 # 生成图像的默认储存位置, 默认为代码文件所在目录
-plot_basedir = 'img/'
+# plot_basedir = 'img/'
 
 
 # Add any paths that contain templates here, relative to this directory.
