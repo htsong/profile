@@ -1,0 +1,2673 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>HTML5 Canvas_w3cschool</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="keywords" content="HTML5 Canvas" />
+<meta name="description" content="HTML5 Canvas
+&lt;canvas&gt;元素是HTML5中的新元素，通过使用该元素，你可以在网页中绘制所需的图形。
+
+
+标签定义图形，比如图表和其他图像，您必须使用脚本来绘制图形。
+在画布上（Canvas）画一个红色矩形，渐变矩形，彩色矩形，和一些彩色的文字。 
+
+
+什么是 Canva_来自HTML5教程，w3cschool编程狮。" />
+<link href="//www.w3cschool.cn/statics/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="/statics/w3c/iconfont/iconfont.css">
+<link rel="stylesheet" href="//www.w3cschool.cn/statics/css/w3.css?v=1.8" />
+<link rel="stylesheet" href="//www.w3cschool.cn/statics/css/style-kn-project-view.css" type="text/css" />
+<link rel="stylesheet" href="//www.w3cschool.cn/statics/css/style-theme.css" type="text/css" />
+<link rel="stylesheet" href="//www.w3cschool.cn/statics/css/project.css" />
+<link href="//www.w3cschool.cn/plugins/highlight/styles/default.css" rel="stylesheet" type="text/css"/>
+<script src="//www.w3cschool.cn/plugins/highlight/highlight.pack.js" type="text/javascript"></script>
+<link rel="shortcut icon" href="//www.w3cschool.cn/statics/images/favicon.ico"/>
+<script src="//www.w3cschool.cn/statics/js/jquery-1.8.3.min.js" type="text/javascript"></script>
+<script src="//www.w3cschool.cn/statics/plugins/jquery-slimscroll/jquery.slimscroll.1.38.min.js" type="text/javascript"></script>
+<script src="//www.w3cschool.cn/statics/js/project.leftbox.js" type="text/javascript"></script>
+</head>
+<style type="text/css">
+/*点赞*/
+.islike{
+float: right;
+display: inline-block;
+line-height: 30px;
+padding: 0 5px;
+vertical-align: middle;
+color: #333
+}
+.islike a{
+color: #3a3838;
+text-decoration: none;
+}
+.isdone{
+color: #ed9c28;
+}
+
+/*点赞结束*/
+
+/* 微信登录框 */
+.modal-mask, .modal-wrap { position: fixed; top: 0; left: 0; right: 0; bottom: 0; }
+.modal-mask { z-index: 1998; background-color: rgba(0, 0, 0, .45); }
+.modal-wrap { z-index: 1999; }
+
+.modal { position: relative; top: 100px; width: 520px; margin: 0 auto; border-top: 2px solid #fe6a00; border-radius: 3px; background-color: #fff; line-height: 1.5; }
+.modal-close { position: absolute; top: 14px; right: 12px; color: #999; cursor: pointer; transition: color .24s; }
+.modal-close > .i-icon { font-size: 21px; vertical-align: top; }
+.modal-close:hover { color: #444; }
+.modal-header { padding: 14px 16px; border-bottom: 1px solid #e8eaec; color: #17233d; font-size: 16px; font-weight: 700; line-height: 21px; }
+.modal-body { padding: 16px; font-size: 14px; }
+.modal-footer { padding: 12px 18px; border-top: 1px solid #e8eaec; text-align: right; }
+.modal-footer .modal-btn { height: 32px; padding: 0 15px; border-radius: 4px; color: #fff; font-size: 14px; cursor: pointer; -webkit-transition: all .24s; transition: all .24s; }
+
+.modal-footer .modal-btn-primary { background-color: #fe6a00; border: 1px solid #fe6a00; }
+.modal-footer .modal-btn-primary:hover { background-color: #fea400; border-color: #fea400; }
+
+@media (max-width: 576px) {
+.modal { width: auto; margin: 0 10px; }
+}
+
+#wxlogin .modal-body { text-align: center; }
+#wxlogin .modal-body .qrcode { width: 430px; height: 430px; margin: 0 auto; }
+#wxlogin .modal-body .info { margin-top: 12px; }
+</style>
+<body>
+<div id="full-height-container" class="project-container color-theme-white">
+<!--控制本地颜色主题样式-->
+<script type="text/javascript">
+var tempColor = $.cookie("color");
+if (tempColor != undefined) {
+$("#full-height-container").addClass(tempColor);
+}
+</script>
+<!-- 教程内容页头部 -->
+<!--header start--> 
+<div id="header" class="header-with-search">
+<div id="header_item">
+<div id="header_index">
+<div id="header-l">
+<a href="//www.w3cschool.cn" title="w3cschool" class="logo"><img src="//7nsts.w3cschool.cn/images/w3c/header-logo.png" alt="w3cschool" /></a>
+<ul class="header-menu">
+<li><a href="//www.w3cschool.cn/tutorial" title="编程入门教程" >编程入门教程</a></li>
+<li><a href="//www.w3cschool.cn/courses/" title="编程课程" >编程课程</a></li>
+<li><a href="//www.w3cschool.cn/codecamp/" title="编程实战">编程实战</a></li> 
+<li><a href="//www.w3cschool.cn/exam/" title="编程题库" >编程题库</a></li>
+<li><a href="//123.w3cschool.cn/webtools" target="_blank" title="w3cschool在线工具集合">在线工具</a></li>
+<li><a href="//www.w3cschool.cn/vip?fcode=headermenu" title="VIP会员" class="header-menu-vip ">VIP会员<i class="hot-icon">HOT</i></a></li>
+</ul>
+</div>
+
+<div class="fr h-right">
+<div class="fl mobile">
+<a class="link" href="//www.w3cschool.cn/download" target="_blank" title="App下载">
+<i class="i-icon i-icon-mobile"></i>App下载
+</a>
+<div class="dropdown">
+<div class="dropdown-inner">
+<div class="text-center dropdown-content">
+<div class="qrcode">
+<img src="//7n.w3cschool.cn/statics/images/w3c/app-qrcode2.png" alt="APP二维码" width="150" height="150">
+<p>扫码下载编程狮APP</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="fl sig-box">
+<div><a class="link" href="//www.w3cschool.cn/register?refer=/">注册</a><span class="sep">|</span><a class="link" href="//www.w3cschool.cn/login?refer=/">登录</a></div>
+</div>
+</div>
+
+<div class="fr searchbox">
+<form action="/search" target="_self">
+<input type="text" name="w" class="box" id="searched_content" placeholder="输入关键字搜索..."/>
+<button type="submit" class="button"/></button>
+</form>
+</div>
+</div>
+</div>
+</div>
+<div class="register-Box" id="register-Box" style="display: none;">
+<div class="register-Box-content">
+<div class="register-Box-top">
+<span class="register-Box-title">注册成功</span>
+<span onclick="closeDialogBox(this)" class="feedback-Box-close">X</span>
+</div>
+<div class="register-Box-info">
+<div class="register-Box-left" style="float: left;">
+<img class="register-cover" src="//atts.w3cschool.cn/attachments/avatar2/avatar_14.jpg">
+</div>
+<div class="register-Box-right">
+
+<p class="register-userinfo-title">
+<i class="usertype-ico-1"></i><span>W3Cschool</span>
+</p>
+<p class="register-userinfo-info">恭喜您成为首批注册用户</p>
+<p class="register-userinfo-info">获得88经验值奖励</p>
+<button class="search-s" onclick="closeDialogBox(this)" id="registerSubmit">马上体验</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+var apppath = '/html5/q2ybmfle.html';
+var domain  = '//www.w3cschool.cn';
+</script>
+<!--header end-->
+ 
+<div id="m-splitter">
+<div class="m-splitter-left left-container">
+<div class="fixed-sidebar mscroller" style="width:100%;">
+<div class="splitter-sidebar">
+<div class="sidebar-space-info">
+<a href="/html5" title="HTML5教程">
+<div class="sidebar-pro-wrapper">
+<div class="sidebar-pro-container">
+<div class="sidebar-pro-img">
+<span><img class="pimg-cover" alt="HTML5教程" src="//atts.w3cschool.cn/attachments/cover/cover_html5.png?t=1569045921?imageView2/1/w/48/h/48"></span>
+</div>
+</div>
+</div>
+<div class="pro-name-container">
+<div class="sidebar-pro-name">
+<span>HTML5教程</span>
+</div>
+</div>
+</a>
+</div>
+<div class="sidebar-pro-nav">
+<ul class="page-sidebar-menu">
+<li class="pro-m">
+<a class="btn-thumbs-up" href="javascript:;" onclick="isProjectLike()" >
+<i class="icon-thumbs-up"></i> <span id="likestatus">赞</span>
+</a>
+</li>
+<li class="pro-m">
+<a id="hbstar" href="javascript:;" onclick="isProjectStar()" data-type="star"><i class="icon-star-empty"></i> <span>收藏</span></a>
+</li>
+<li class="pro-m">
+<a href="javascript:;" title="分享" class="share-btn  popup_more bdsharebuttonbox" data-cmd="more" data-bd-bind="1472196006351"><i class="icon-share"></i> 分享</a>
+</li>
+</ul>
+</div>
+<div class="sidebar-menu">
+<ul>
+<li class="nav-item"><a href="/html5/list/" title="更多文章"><i class="icon-bookmark-empty"></i> <span class="nav-item-label">更多文章</span></a></li>
+</ul>
+</div>
+<!--左侧栏导航 start-->
+<div class="sidebar-nav">
+<ul class="treeth">
+<li class="active sidebar-nav-tree" target="sidebar-tree-content"><a href="javascript:;" class="text" title="目录"><i class="icon icon-th-list"></i> <span class="title">目录</span></a></li>
+<li class="sidebar-nav-search" target="search-box"><a href="javascript:;" class="text" title="搜索"><i class="icon icon-search"></i> <span class="title">搜索</span></a></li>
+<li class="sidebar-nav-star" target="stars-box"><a href="javascript:;" class="text" title="书签"><i class="icon icon-bookmark"></i> <span class="title">书签</span></a></li>
+</ul>
+</div>
+<!--左侧栏导航 end-->
+<div style="clear:both"></div>
+<div class="sidebar-content">                                          
+<div class="sidebar-tree">
+<div class="sidebar-tree-content">
+<div class="dd" id="nestable_handbook" data-tid="20210" data-id="handbook">
+<ol class="dd-list">
+
+
+    
+<li class="dd-item" data-id="pso92f21">
+<div class="dd-content folder-open ">
+<i class="folder icon-folder-open"></i>
+                                 
+<a   title="HTML5 教程">HTML5 教程</a>
+</div>
+<ol class="dd-list">
+                          
+
+
+    
+<li class="dd-item" data-id="html5-intro">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-intro.html" title="开始学习HTML5">开始学习HTML5</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="g5nfhflc">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/g5nfhflc.html" title="HTML5 浏览器支持">HTML5 浏览器支持</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-new-element">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-new-element.html" title="HTML5 新元素">HTML5 新元素</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="q2ybmfle">
+<div class="dd-content   active ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/q2ybmfle.html" title="HTML5 Canvas">HTML5 Canvas</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-svg">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-svg.html" title="HTML5 内联 SVG">HTML5 内联 SVG</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="bxieufld">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/bxieufld.html" title="HTML5 MathML">HTML5 MathML</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-draganddrop">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-draganddrop.html" title="HTML5 拖放">HTML5 拖放</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-geolocation">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-geolocation.html" title="HTML5 地理定位">HTML5 地理定位</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-video">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-video.html" title="HTML5 Video(视频)">HTML5 Video(视频)</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-audio">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-audio.html" title="HTML5 Audio(音频)">HTML5 Audio(音频)</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-form-input-types">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-form-input-types.html" title="HTML5 Input 类型">HTML5 Input 类型</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-form-elements">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-form-elements.html" title="HTML5 表单元素">HTML5 表单元素</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-form-attributes">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-form-attributes.html" title="HTML5 表单属性">HTML5 表单属性</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-semantic-elements">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-semantic-elements.html" title="HTML5 语义元素">HTML5 语义元素</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-webstorage">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-webstorage.html" title="HTML5 Web 存储">HTML5 Web 存储</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-web-sql">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-web-sql.html" title="HTML5 Web SQL">HTML5 Web SQL</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-app-cache">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-app-cache.html" title="HTML5 应用程序缓存">HTML5 应用程序缓存</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-webworkers">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-webworkers.html" title="HTML5 Web Workers">HTML5 Web Workers</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-serversentevents">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-serversentevents.html" title="HTML5 SSE">HTML5 SSE</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-websocket">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-websocket.html" title="HTML5 WebSocket">HTML5 WebSocket</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-syntax">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-syntax.html" title="HTML5 代码规范">HTML5 代码规范</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li></ol></li>
+    
+<li class="dd-item" data-id="tw9n1qf2">
+<div class="dd-content folder-open ">
+<i class="folder icon-folder-open"></i>
+                                 
+<a   title="HTML5 参考手册">HTML5 参考手册</a>
+</div>
+<ol class="dd-list">
+                          
+
+
+    
+<li class="dd-item" data-id="4hxo1qf4">
+<div class="dd-content folder-open ">
+<i class="folder icon-folder-open"></i>
+                                 
+<a   title="HTML5 标签">HTML5 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+
+    
+<li class="dd-item" data-id="html5-doctype">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-doctype.html" title="HTML5 &lt;!DOCTYPE&gt; 标签">HTML5 &lt;!DOCTYPE&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-a">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-a.html" title="HTML5 &lt;a&gt; 标签">HTML5 &lt;a&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-area">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-area.html" title="HTML5 &lt;area&gt; 标签">HTML5 &lt;area&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-abbr">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-abbr.html" title="HTML5 &lt;abbr&gt; 标签">HTML5 &lt;abbr&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-applet">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-applet.html" title="HTML5 &lt;applet&gt; 标签">HTML5 &lt;applet&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-article">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-article.html" title="HTML5 &lt;article&gt;标签">HTML5 &lt;article&gt;标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-aside">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-aside.html" title="HTML5 &lt;aside&gt; 标签">HTML5 &lt;aside&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-address">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-address.html" title="HTML5 &lt;address&gt; 标签">HTML5 &lt;address&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-acronym">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-acronym.html" title="HTML5 &lt;acronym&gt; 标签 (已废弃)">HTML5 &lt;acronym&gt; 标签 (已废弃)</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-b">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-b.html" title="HTML5 &lt;b&gt; 标签">HTML5 &lt;b&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-basefont">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-basefont.html" title="HTML5 &lt;basefont&gt; 标签 (已废弃)">HTML5 &lt;basefont&gt; 标签 (已废弃)</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-base">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-base.html" title="HTML5 &lt;base&gt; 标签">HTML5 &lt;base&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-blockquote">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-blockquote.html" title="HTML5 &lt;blockquote&gt; 标签">HTML5 &lt;blockquote&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-br">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-br.html" title="HTML5  &lt;br /&gt;标签">HTML5  &lt;br /&gt;标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-big">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-big.html" title="HTML5 &lt;big&gt; 标签 (已废弃)">HTML5 &lt;big&gt; 标签 (已废弃)</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-button">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-button.html" title="HTML5 &lt;button&gt; 标签">HTML5 &lt;button&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-bdo">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-bdo.html" title="HTML5 &lt;bdo&gt; 标签">HTML5 &lt;bdo&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-center">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-center.html" title="HTML5 &lt;center&gt; 标签 (已废弃)">HTML5 &lt;center&gt; 标签 (已废弃)</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-command">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-command.html" title="HTML5 &lt;command&gt; 标签 (已废弃)">HTML5 &lt;command&gt; 标签 (已废弃)</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-col">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-col.html" title="HTML5 &lt;col&gt; 标签">HTML5 &lt;col&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-colgroup">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-colgroup.html" title="HTML5 &lt;colgroup&gt; 标签">HTML5 &lt;colgroup&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-caption">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-caption.html" title="HTML5 &lt;caption&gt; 标签">HTML5 &lt;caption&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-phrase-elements">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-phrase-elements.html" title="HTML5 &lt;em&gt; &lt;strong&gt; &lt;dfn&gt; &lt;code&gt; &lt;samp&gt; &lt;kbd&gt; &lt;var&gt; &lt;cite&gt; 标签">HTML5 &lt;em&gt; &lt;strong&gt; &lt;dfn&gt; &lt;code&gt; &lt;samp&gt; &lt;kbd&gt; &lt;var&gt; &lt;cite&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-ul">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-ul.html" title="HTML5 &lt;ul&gt; 标签">HTML5 &lt;ul&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-dl">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-dl.html" title="HTML5 &lt;dl&gt; 标签">HTML5 &lt;dl&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-del">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-del.html" title="HTML5 &lt;del&gt; 标签">HTML5 &lt;del&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-dd">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-dd.html" title="HTML5 &lt;dd&gt; 标签">HTML5 &lt;dd&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-details">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-details.html" title="HTML5 &lt;details&gt; 标签">HTML5 &lt;details&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-div">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-div.html" title="HTML5 &lt;div&gt; 标签">HTML5 &lt;div&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-dir">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-dir.html" title="HTML5 &lt;dir&gt; 标签 (已废弃)">HTML5 &lt;dir&gt; 标签 (已废弃)</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-embed">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-embed.html" title="HTML5 &lt;embed&gt; 标签">HTML5 &lt;embed&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-frameset">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-frameset.html" title="HTML5 &lt;frameset&gt; 标签 (已废弃)">HTML5 &lt;frameset&gt; 标签 (已废弃)</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-figcaption">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-figcaption.html" title="HTML5 &lt;figcaption&gt; 标签">HTML5 &lt;figcaption&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-form">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-form.html" title="HTML5 &lt;form&gt; 标签">HTML5 &lt;form&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-frame">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-frame.html" title="HTML5 &lt;frame&gt; 标签 (已废弃)">HTML5 &lt;frame&gt; 标签 (已废弃)</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-figure">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-figure.html" title="HTML5 &lt;figure&gt; 标签">HTML5 &lt;figure&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-footer">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-footer.html" title="HTML5 &lt;footer&gt; 标签">HTML5 &lt;footer&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-fieldset">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-fieldset.html" title="HTML5 &lt;fieldset&gt; 标签">HTML5 &lt;fieldset&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-hgroup">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-hgroup.html" title="HTML5 &lt;hgroup&gt; 标签">HTML5 &lt;hgroup&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-hr">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-hr.html" title="HTML5 &lt;hr&gt; 标签">HTML5 &lt;hr&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-hn">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-hn.html" title="HTML5 &lt;h1&gt; 至 &lt;h6&gt; 标签">HTML5 &lt;h1&gt; 至 &lt;h6&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-header">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-header.html" title="HTML5 &lt;header&gt; 标签">HTML5 &lt;header&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-html">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-html.html" title="HTML5 &lt;html&gt; 标签">HTML5 &lt;html&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-head">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-head.html" title="HTML5 &lt;head&gt; 标签">HTML5 &lt;head&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-i">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-i.html" title="HTML5 &lt;i&gt; 标签">HTML5 &lt;i&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-iframe">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-iframe.html" title="HTML5 &lt;iframe&gt; 标签">HTML5 &lt;iframe&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-input">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-input.html" title="HTML5 &lt;input&gt; 标签">HTML5 &lt;input&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-img">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-img.html" title="HTML5 &lt;img&gt; 标签">HTML5 &lt;img&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-ins">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-ins.html" title="HTML5 &lt;ins&gt; 标签">HTML5 &lt;ins&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-keygen">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-keygen.html" title="HTML5 &lt;keygen&gt; 标签 (已废弃)">HTML5 &lt;keygen&gt; 标签 (已废弃)</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-link">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-link.html" title="HTML5 &lt;link&gt; 标签">HTML5 &lt;link&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-li">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-li.html" title="HTML5 &lt;li&gt; 标签">HTML5 &lt;li&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-legend">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-legend.html" title="HTML5 &lt;legend&gt; 标签">HTML5 &lt;legend&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-label">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-label.html" title="HTML5 &lt;label&gt; 标签">HTML5 &lt;label&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-map">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-map.html" title="HTML5 &lt;map&gt; 标签">HTML5 &lt;map&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-meta">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-meta.html" title="HTML5 &lt;meta&gt; 标签">HTML5 &lt;meta&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-menu">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-menu.html" title="HTML5 &lt;menu&gt; 标签">HTML5 &lt;menu&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-meter">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-meter.html" title="HTML5 &lt;meter&gt; 标签">HTML5 &lt;meter&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-mark">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-mark.html" title="HTML5 &lt;mark&gt; 标签">HTML5 &lt;mark&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-nav">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-nav.html" title="HTML5 &lt;nav&gt; 标签">HTML5 &lt;nav&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-noscript">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-noscript.html" title="HTML5 &lt;noscript&gt; 标签">HTML5 &lt;noscript&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-ol">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-ol.html" title="HTML5 &lt;ol&gt; 标签">HTML5 &lt;ol&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-object">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-object.html" title="HTML5 &lt;object&gt; 标签">HTML5 &lt;object&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-option">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-option.html" title="HTML5 &lt;option&gt; 标签">HTML5 &lt;option&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-output">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-output.html" title="HTML5 &lt;output&gt; 标签">HTML5 &lt;output&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-optgroup">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-optgroup.html" title="HTML5 &lt;optgroup&gt; 标签">HTML5 &lt;optgroup&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-p">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-p.html" title="HTML5 &lt;p&gt; 标签">HTML5 &lt;p&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-pre">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-pre.html" title="HTML5 &lt;pre&gt; 标签">HTML5 &lt;pre&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-param">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-param.html" title="HTML5 &lt;param&gt; 标签">HTML5 &lt;param&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-progress">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-progress.html" title="HTML5 &lt;progress&gt; 标签">HTML5 &lt;progress&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-q">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-q.html" title="HTML5 &lt;q&gt; 标签">HTML5 &lt;q&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-rp">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-rp.html" title="HTML5 &lt;rp&gt; 标签">HTML5 &lt;rp&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-rt">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-rt.html" title="HTML5 &lt;rt&gt; 标签">HTML5 &lt;rt&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-ruby">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-ruby.html" title="HTML5 &lt;ruby&gt; 标签">HTML5 &lt;ruby&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-s">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-s.html" title="HTML5 &lt;s&gt; 标签">HTML5 &lt;s&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-sup-sub">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-sup-sub.html" title="HTML5 &lt;sub&gt; 和 &lt;sup&gt; 标签">HTML5 &lt;sub&gt; 和 &lt;sup&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-span">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-span.html" title="HTML5 &lt;span&gt; 标签">HTML5 &lt;span&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-small">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-small.html" title="HTML5 &lt;small&gt; 标签">HTML5 &lt;small&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-style">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-style.html" title="HTML5 &lt;style&gt; 标签">HTML5 &lt;style&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-strike">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-strike.html" title="HTML5 &lt;strike&gt; 标签">HTML5 &lt;strike&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-select">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-select.html" title="HTML5 &lt;select&gt; 标签">HTML5 &lt;select&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-source">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-source.html" title="HTML5 &lt;source&gt; 标签">HTML5 &lt;source&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-section">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-section.html" title="HTML5 &lt;section&gt; 标签">HTML5 &lt;section&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-summary">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-summary.html" title="HTML5 &lt;summary&gt; 标签">HTML5 &lt;summary&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-td">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-td.html" title="HTML5 &lt;td&gt; 标签">HTML5 &lt;td&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-th">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-th.html" title="HTML5 &lt;th&gt; 标签">HTML5 &lt;th&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-tt">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-tt.html" title="HTML5 &lt;tt&gt; 标签">HTML5 &lt;tt&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-tr">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-tr.html" title="HTML5 &lt;tr&gt; 标签">HTML5 &lt;tr&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-table">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-table.html" title="HTML5 &lt;table&gt; 标签">HTML5 &lt;table&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-title">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-title.html" title="HTML5 &lt;title&gt; 标签">HTML5 &lt;title&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-tfoot">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-tfoot.html" title="HTML5 &lt;tfoot&gt; 标签">HTML5 &lt;tfoot&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-thead">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-thead.html" title="HTML5 &lt;thead&gt; 标签">HTML5 &lt;thead&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-time">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-time.html" title="HTML5 &lt;time&gt; 标签">HTML5 &lt;time&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-tbody">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-tbody.html" title="HTML5 &lt;tbody&gt; 标签">HTML5 &lt;tbody&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-textarea">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-textarea.html" title="HTML5 &lt;textarea&gt; 标签">HTML5 &lt;textarea&gt; 标签</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li></ol></li></ol></li>
+    
+<li class="dd-item" data-id="a89e1sf3">
+<div class="dd-content folder-open ">
+<i class="folder icon-folder-open"></i>
+                                 
+<a   title="拓展阅读">拓展阅读</a>
+</div>
+<ol class="dd-list">
+                          
+
+
+    
+<li class="dd-item" data-id="html5-download">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-download.html" title="《HTML5从入门到精通》中文教程电子书下载">HTML5电子书下载</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-tool">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-tool.html" title="推荐12款程序员必备的HTML5开发工具">HTML5开发工具</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-game2">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-game2.html" title="直接上源码教你做经典HTML5小游戏">HTML5小游戏源码</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-template">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-template.html" title="大家都在找的HTML5模板下载">HTML5模板下载</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="html5-video2">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a  href="/html5/html5-video2.html" title="序员必知的HTML5 video视频二三事">HTML5 video</a>
+</div>
+<ol class="dd-list">
+                          
+</ol></li>
+</ol>
+</li>
+</ol>
+</div>  
+</div>                                
+<!--  sidebar-tree-content end  -->
+<div class="search-box hide1">
+<div id="knsearch" class="tab-pane">
+<div class="knsearch-input">
+<input type="text" placeholder="搜索手册内容" name="w" class="input-s">
+<button class="knsearchbtn">搜索</button>
+<!--<button class="kncleanbtn">清空</button>-->
+</div>                    
+<div class="searchres">
+</div>
+<div class="sidebar-tree-dict"></div>
+</div>
+</div>
+<div class="stars-box hide1">                  
+<div id="kncollect" class="tab-pane">
+<ul class="dd-list">
+<li class="nostar">请登录查看</li>
+</ul>
+</div>
+</div>
+</div>                    
+</div>
+</div>
+<!-- <div class="space-tools-section">
+<div class="tools-button">
+<a href="" class="expand-collapse-trigger"></a>
+</div>
+</div> -->
+</div>
+</div>
+<div class="splitter-handle left-drager">
+<div class="left-dragger-c splitter-handle-highlight"></div>
+</div>
+<div id="pro-mian" class="main-container font0" >
+<div class="project-body">
+<div class="portlet-title pro-title">
+<div class="set-btn-group font-settings pull-left">
+<a href="javascript:;" class="expand-collapse-trigger" title="折叠/展开"><i class="icon-th-list"></i></a>
+<a href="javascript:;" class="toggle-dropdown" title="视觉主题设置"><i class="icon-font"></i></a>
+<div class="set-dropdown-menu docblur" style="display:none;">
+<div class="dropdown-caret">
+<span class="caret-outer"></span>
+<span class="caret-inner"></span>
+</div>
+<div class="buttons font-opt">
+<button class="button size font-reduce" font="reduce" title="缩小字体">A</button>
+<button class="button size font-enlarge" font="enlarge" title="放大字体">A</button>
+</div>
+<div class="buttons bg-color">
+<button class="button theme" color="color-theme-white" title="默认模式">默认</button>
+<button class="button theme" color="color-theme-sepia" title="护眼模式">护眼</button>
+<button class="button theme" color="color-theme-night" title="夜间模式">夜间</button>
+</div>
+</div>
+</div>
+<div class="kn-btn-group pull-right">            
+<span id="content-head-viewcount" class="viewcount-btn"><i class="icon-eye-open"></i> <span>阅读(230.2k)</span></span>
+<a id="knstar" href="javascript:;" onclick="isstar()" data-type="star" ><i class="icon-bookmark-empty"></i> <span>书签</span></a>
+<a class="btn-thumbs-up" href="javascript:;" onclick="islike()"><i class="icon-thumbs-up"></i> <span id="likestatus">赞</span>(<span id="likecount">71</span>)</a>
+<a href="javascript:;" title="分享" class="share-btn  popup_more bdsharebuttonbox" data-cmd="more" data-bd-bind="1472196006351"><i class="icon-share"></i> 分享</a>
+<a href="/edit/html5/q2ybmfle" rel="nofollow"><i class="icon-edit"></i> <span>我要纠错</span></a>
+</div>
+</div>
+<div id="pro-mian-header">
+<div class="content-top">
+<h1>HTML5 Canvas</h1>
+</div>
+<!--                 <div class="kn-infomation">
+由&nbsp;<span>wadewoshi</span>&nbsp;创建，小路依依 最后一次修改&nbsp;<span>2016-02-24</span>    
+</div>  -->         
+</div>          
+<div class="content-bg">
+<div class="content-intro view-box "><h2>HTML5 <span class="color_h1">Canvas</span></h2>
+<div><span class="color_h1">&lt;canvas&gt;元素是HTML5中的新元素，通过使用该元素，你可以在网页中绘制所需的图形。</span>
+</div>
+<hr>
+<p class="intro">标签定义图形，比如图表和其他图像，您必须使用脚本来绘制图形。</p>
+<p class="intro">在画布上（Canvas）画一个红色矩形，渐变矩形，彩色矩形，和一些彩色的文字。 <img src="https://atts.w3cschool.cn/attachments/image/20180206/1517887889549574.png" alt="" style="max-width:100%;" class="">
+
+</p><hr>
+<h2>什么是 Canvas?</h2>
+<p>HTML5 元素用于图形的绘制，通过脚本 (通常是<a href="https://www.w3cschool.cn/javascript/js-tutorial.html" target="_blank">JavaScript</a>)来完成.</p>
+<p>标签只是图形容器，您必须使用脚本来绘制图形。</p>
+<p>你可以通过多种方法使用Canva绘制路径,盒、圆、字符以及添加图像。</p>
+<hr>
+<h2>浏览器支持</h2>
+<p>
+    <img src="https://atts.w3cschool.cn/attachments/image/20160224/1456314599889875.gif" alt="Internet Explorer" title="Internet Explorer" width="31" height="30">
+    <img src="https://atts.w3cschool.cn/attachments/image/20160224/1456314599453766.gif" alt="Firefox" title="Firefox" width="31" height="30">
+    <img src="https://atts.w3cschool.cn/attachments/image/20160224/1456314599640551.gif" alt="Opera" title="Opera" width="28" height="30">
+    <img src="https://atts.w3cschool.cn/attachments/image/20160224/1456314599855045.gif" alt="Google Chrome" title="Google Chrome" width="31" height="30">
+    <img src="https://atts.w3cschool.cn/attachments/image/20160224/1456314599485429.gif" alt="Safari" title="Safari" width="28" height="30">
+</p>
+<p>Internet Explorer 9+, Firefox, Opera, Chrome, 和 Safari 支持 元素.</p>
+<p><strong>注意:</strong> Internet Explorer 8 及更早 IE 版本的浏览器不支持 &lt;canvas&gt; 元素.</p>
+<hr>
+<h2>创建一个画布（Canvas）</h2><p>一个画布在网页中是一个矩形框，通过 &lt;canvas&gt; 元素来绘制.</p><p>注意:&nbsp;默认情况下 &lt;canvas&gt; 元素没有边框和内容。</p><p>&lt;canvas&gt;简单实例如下:</p><div class="code notranslate"><div>&lt;canvas id="myCanvas" width="200" height="100"&gt;&lt;/canvas&gt;</div></div>
+<p><strong style="line-height: 1.7; white-space: pre-wrap;">注意:</strong><span style="line-height: 1.7; white-space: pre-wrap;"> 标签通常需要指定一个id属性 (脚本中经常引用), width 和 height 属性定义的画布的大小。</span>
+</p>
+<p><strong>提示:</strong> 你可以在HTML页面中使用多个 &lt;canvas&gt; 元素.</p>
+<p>使用 style 属性来添加边框:</p>
+<div class="example">
+    <h2 class="example">实例</h2>
+    <div class="example_code notranslate">&lt;canvas id="myCanvas" width="200" height="100"
+        <br>style="border:1px solid #000000;"&gt;
+        <br>&lt;/canvas&gt;
+        <br>
+    </div>
+    <br><a target="_blank" showtry="1" href="/tryrun/showhtml/tryhtml5_canvas_empty" class="tryitbtn">尝试一下 »</a>
+</div>
+<p>
+    <br>
+</p>
+<hr>
+<h2>使用 JavaScript 来绘制图像</h2>
+<p>canvas 元素本身是没有绘图能力的。所有的绘制工作必须在 JavaScript 内部完成：</p>
+<div class="example">
+    <h2 class="example">实例</h2>
+    <div class="example_code notranslate">&lt;script&gt;
+        <br>var c=document.getElementById("myCanvas");
+        <br>var ctx=c.getContext("2d");
+        <br>ctx.fillStyle="#FF0000";
+        <br>ctx.fillRect(0,0,150,75);
+        <br>&lt;/script&gt;&nbsp;
+        <br>
+    </div>
+    <br><a target="_blank" showtry="1" href="/tryrun/showhtml/tryhtml5_canvas_first" class="tryitbtn">尝试一下 »</a>
+</div>
+<p><strong>实例解析:</strong>
+</p>
+<p>首先，找到 &lt;canvas&gt; 元素:<span style="background-color: rgb(239, 239, 239); font-family: Consolas, &quot;Courier New&quot;, Courier, monospace; white-space: pre-wrap;"></span></p><div class="code notranslate"><div>var c=document.getElementById("myCanvas");</div></div>
+<p>然后，创建 context 对象：<span style="background-color: rgb(239, 239, 239); font-family: Consolas, &quot;Courier New&quot;, Courier, monospace; white-space: pre-wrap;"></span></p><div class="code notranslate"><div>var ctx=c.getContext("2d");</div></div>
+<p>getContext("2d") 对象是内建的 HTML5 对象，拥有多种绘制路径、矩形、圆形、字符以及添加图像的方法。</p>
+<p>下面的两行代码绘制一个红色的矩形：<span style="background-color: rgb(239, 239, 239); font-family: Consolas, &quot;Courier New&quot;, Courier, monospace; white-space: pre-wrap;"></span></p><div class="code notranslate"><div>ctx.fillStyle="#FF0000";        <br>ctx.fillRect(0,0,150,75);</div></div>
+<p>设置<a href="https://www.w3cschool.cn/htmltags/canvas-fillstyle.html" target="_blank">fillStyle属性</a>可以是CSS颜色，渐变，或图案。fillStyle默认设置是#000000（黑色）。</p>
+<p>fillRect(<em>x,y,width,height</em>) 方法定义了矩形当前的填充方式。</p>
+<hr>
+<h2>Canvas 坐标</h2>
+<p>canvas 是一个二维网格。</p>
+<p>canvas 的左上角坐标为 (0,0)</p>
+<p>上面的 fillRect 方法拥有参数 (0,0,150,75)。</p>
+<p>意思是：在画布上绘制 150x75 的矩形，从左上角开始 (0,0)。</p>
+<p><b>坐标实例</b></p><p>如下图所示，画布的 X 和 Y 坐标用于在画布上对绘画进行定位。</p><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPEAAACJCAIAAABy2EnyAAACJklEQVR4nO3Zy42dQBRAwcmp0yKUjoYUnAFpEIS9sPU8I0sWT8NHOqpaAQuaxRG6NB8/oeXj6QeAk2maGk1To2lqNE2NpqnR9OX2dRljbq/zbY6xrPuDTxSn6Tts81X1p0Ouoel7/ElZ0TfQ9F22OcZQ9A00fZttSvoWmr7JNseY0+hxA03f4jVHG6ivp+nrfd3MU/XVNH21f8doG9TX0jQ1mqZG09RomhpNU6NpajRNjaap0TQ15zf9A67xZNOn3xM0TY2mqdE0NZqmRtPUaJoaTVOjaWo0TY2mqdE0NZqmRtPUaJoaTVOjaWo0TY2mqdE0NZqmRtPUaJoaTVOjaWo0TY2mqdE0NZqmRtPUaJoaTVOjaWo0TY2mqdE0NZqmRtPUaJoaTVOjaWq+2fQ2x1jW/b9XTlgbjvv2e3pfl08Nb3OMuZ2+Nhx3wuzxt+p9XY4XrWmucco8/bvlN4vWNNc46RtxX5fxxtTx7tpw3Fn7Hm+/pN9aG47TNDWapkbT1PiPSI2mqdE0NZqmRtPUaJoaTVOjaWo0TY2mqdE0NZqmRtPUaJoaTVOjaWo0TY2mqdE0NZqmRtPUaJoaTVOjaWo0TY2mqdE0NZqmRtPUaJoaTVOjaWo0TY2mqdE0NZqmRtPUaJoaTVOjaWo0TY2mqdE0NZqmRtPUaJoaTVOjaWo0Tc3DTcMVHmsanqVpajRNjaap0TQ1mqZG09RomhpNU6NpajRNzS+BFYKSoTg6vwAAAABJRU5ErkJgggA=" alt=""></p>
+<div>
+    <div style="width:402px;float:left"></div>
+</div>
+<hr>
+<h2>Canvas - 路径</h2>
+<p>在Canvas上画线，我们将使用以下两种方法：</p>
+<ul class=" list-paddingleft-2">
+    <li>
+        <p>moveTo(<em>x,y</em>) 定义线条开始坐标</p>
+    </li>
+    <li>
+        <p>lineTo(<em>x,y</em>) 定义线条结束坐标</p>
+    </li>
+</ul>
+<p>绘制线条我们必须使用到 "ink" 的方法，就像stroke().</p>
+<div class="example">
+    <h2 class="example">实例</h2>
+    <p>定义开始坐标(0,0), 和结束坐标 (200,100). 然后使用 stroke() 方法来绘制线条:</p>
+    <img src="https://atts.w3cschool.cn/attachments/day_161010/201610101646232355.png" alt="">
+    <p>JavaScript:</p>
+    <div class="example_code notranslate">var c=document.getElementById("myCanvas");
+        <br>var ctx=c.getContext("2d");
+        <br>ctx.moveTo(0,0);
+        <br>ctx.lineTo(200,100);
+        <br>ctx.stroke();</div>
+    <br><a class="tryitbtn" showtry="1" href="/tryrun/showhtml/tryhtml5_canvas_tut_path" target="_blank">尝试一下 »</a>
+</div>
+<p>在canvas中绘制圆形, 我们将使用以下方法:</p>
+<ul class=" list-paddingleft-2">
+    <li>
+        <p>arc(x,y,r,start,stop)</p>
+    </li>
+</ul>
+<p>实际上我们在绘制圆形时使用了 "ink" 的方法, 比如 stroke() 或者 fill().</p>
+<div class="example">
+    <h2 class="example">实例</h2>
+    <p>使用 arc() 方法 绘制一个圆:</p>
+    <img src="https://atts.w3cschool.cn/attachments/day_161010/201610101645445736.png" alt="">
+    <p>JavaScript:</p>
+    <div class="example_code notranslate">var c=document.getElementById("myCanvas");
+        <br>var ctx=c.getContext("2d");
+        <br>ctx.beginPath();
+        <br>ctx.arc(95,50,40,0,2*Math.PI);
+        <br>ctx.stroke();</div>
+    <br><a class="tryitbtn" showtry="1" href="/tryrun/showhtml/tryhtml5_canvas_tut_path2" target="_blank">尝试一下 »</a>
+</div>
+<p>
+    <br>
+</p>
+<hr>
+<h2>Canvas - 文本</h2>
+<p>使用 canvas 绘制文本，重要的属性和方法如下：</p>
+<ul class=" list-paddingleft-2">
+    <li>
+        <p>font - 定义字体</p>
+    </li>
+    <li>
+        <p>fillText(<em>text,x,y</em>) - 在 canvas 上绘制实心的文本</p>
+    </li>
+    <li>
+        <p>strokeText(<em>text,x,y</em>) - 在 canvas 上绘制空心的文本</p>
+    </li>
+</ul>
+<p>使用 fillText():</p>
+<div class="example">
+    <h2 class="example">实例</h2>
+    <p>使用 "Arial" 字体在画布上绘制一个高 30px 的文字（实心）：</p>
+    <img src="https://atts.w3cschool.cn/attachments/day_161010/201610101644584543.png" alt="">
+    <p>JavaScript:</p>
+    <div class="example_code notranslate">var c=document.getElementById("myCanvas");
+        <br>var ctx=c.getContext("2d");
+        <br>ctx.font="30px Arial";
+        <br>ctx.fillText("Hello World",10,50);</div>
+    <br><a class="tryitbtn" showtry="1" href="/tryrun/showhtml/tryhtml5_canvas_tut_text" target="_blank">尝试一下 »</a>
+</div>
+<p>使用 strokeText():</p>
+<div class="example">
+    <h2 class="example">实例</h2>
+    <p>使用 "Arial" 字体在画布上绘制一个高 30px 的文字（空心）：</p>
+    <img src="https://atts.w3cschool.cn/attachments/day_161010/201610101644197062.png" alt="">
+    <p>JavaScript:</p>
+    <div class="example_code notranslate">var c=document.getElementById("myCanvas");
+        <br>var ctx=c.getContext("2d");
+        <br>ctx.font="30px Arial";
+        <br>ctx.strokeText("Hello World",10,50);</div>
+    <br><a class="tryitbtn" showtry="1" href="/tryrun/showhtml/tryhtml5_canvas_tut_text2" target="_blank">尝试一下 »</a>
+</div>
+<p>
+    <br>
+</p>
+<hr>
+<h2>Canvas - &nbsp;渐变</h2>
+<p>渐变可以填充在矩形, 圆形, 线条, 文本等等, 各种形状可以自己定义不同的颜色。</p>
+<p>以下有两种不同的方式来设置Canvas渐变：</p>
+<ul class=" list-paddingleft-2">
+    <li>
+        <p>createLinearGradient(<em>x,y,x1,y1</em>) - 创建线条渐变</p>
+    </li>
+    <li>
+        <p>createRadialGradient(<em>x,y,r,x1,y1,r1</em>) - 创建一个径向/圆渐变</p>
+    </li>
+</ul>
+<p>当我们使用渐变对象，必须使用两种或两种以上的停止颜色。</p>
+<p>addColorStop()方法指定颜色停止，参数使用坐标来描述，可以是0至1.</p>
+<p>使用渐变，设置fillStyle或strokeStyle的值为渐变，然后绘制形状，如矩形，文本，或一条线。</p>
+<p>使用 createLinearGradient():</p>
+<div class="example">
+    <h2 class="example">实例</h2>
+    <p>创建一个线性渐变。使用渐变填充矩形:</p>
+    <img src="https://atts.w3cschool.cn/attachments/day_161010/201610101643415459.png" alt="">
+    <br>
+    <p>JavaScript:</p>
+    <div class="example_code notranslate">var c=document.getElementById("myCanvas");
+        <br>var ctx=c.getContext("2d");
+        <br>
+        <br>// Create gradient
+        <br>var grd=ctx.createLinearGradient(0,0,200,0);
+        <br>grd.addColorStop(0,"red");
+        <br>grd.addColorStop(1,"white");
+        <br>
+        <br>// Fill with gradient
+        <br>ctx.fillStyle=grd;
+        <br>ctx.fillRect(10,10,150,80);</div>
+    <br><a class="tryitbtn" showtry="1" href="/tryrun/showhtml/tryhtml5_canvas_tut_grad" target="_blank">尝试一下 »</a>
+</div>
+<p>使用 createRadialGradient():</p>
+<div class="example">
+    <h2 class="example">实例</h2>
+    <p>创建一个径向/圆渐变。使用渐变填充矩形：</p>
+    <img src="https://atts.w3cschool.cn/attachments/day_161010/201610101641262528.png" alt="">
+    <br>
+    <p>JavaScript:</p>
+    <div class="example_code notranslate">var c=document.getElementById("myCanvas");
+        <br>var ctx=c.getContext("2d");
+        <br>
+        <br>// Create gradient
+        <br>var grd=ctx.createRadialGradient(75,50,5,90,60,100);
+        <br>grd.addColorStop(0,"red");
+        <br>grd.addColorStop(1,"white");
+        <br>
+        <br>// Fill with gradient
+        <br>ctx.fillStyle=grd;
+        <br>ctx.fillRect(10,10,150,80);</div>
+    <br><a class="tryitbtn" showtry="1" href="/tryrun/showhtml/tryhtml5_canvas_tut_grad2" target="_blank">尝试一下 »</a>
+</div>
+<p><b>提示：</b>当使用&lt;canvas&gt;元素创建径向渐变的时候 context.createRadialGradient(x , y , r , x1 , y1 , r1)&nbsp;括号内的参数有如下的含义:</p>
+<ul>
+    <li>&nbsp;x：表示渐变的开始圆的 x 坐标</li>
+    <li>&nbsp;y：表示渐变的开始圆的 y 坐标</li>
+    <li>&nbsp;r：表示开始圆的半径</li>
+    <li>&nbsp;x1：表示渐变的结束圆的 x 坐标</li>
+    <li>&nbsp;y1：表示渐变的结束圆的 y 坐标</li>
+    <li>&nbsp;r1：表示结束圆的半径</li>
+</ul>
+<p>
+    <br>
+</p>
+<hr>
+<h2>Canvas - 图像</h2>
+<p>把一幅图像放置到画布上, 使用以下方法:</p>
+<ul class=" list-paddingleft-2">
+    <li>
+        <p>drawImage(<em>image,x,y</em>)</p>
+    </li>
+</ul>
+<div class="example">
+    <h2 class="example">使用图像:</h2>
+    <p>
+        <img id="scream" src="https://atts.w3cschool.cn/attachments/image/20160224/1456314599613373.jpg" alt="The Scream">
+    </p>
+    <h2 class="example">实例</h2>
+    <p>把一幅图像放置到画布上:</p>
+    <img src="https://atts.w3cschool.cn/attachments/day_161010/201610101643036288.png" alt="">
+    <p>JavaScript:</p>
+    <div class="example_code notranslate">var c=document.getElementById("myCanvas");
+        <br>var ctx=c.getContext("2d");
+        <br>var img=document.getElementById("scream");
+        <br>ctx.drawImage(img,10,10);</div>
+    <br><a class="tryitbtn" showtry="1" href="/tryrun/showhtml/tryhtml5_canvas_tut_img" target="_blank">尝试一下 »</a>
+</div>
+<p>
+    <br>
+</p>
+<hr>
+<h2>HTML Canvas 参考手册</h2>
+<p>标签的完整属性可以参考<a textvalue="Canvas 参考手册." target="_self" href="/htmltags/ref-canvas.html">Canvas 参考手册.</a>
+</p>
+<h2>The HTML  Tag</h2>
+<table class="reference notranslate                                        ">
+    <tbody>
+        <tr class="firstRow">
+            <th width="150" align="left">Tag</th>
+            <th align="left">描述</th>
+        </tr>
+        <tr>
+            <td><a target="_self" href="/htmltags/tag-canvas.html">&lt;canvas&gt;</a>
+            </td>
+            <td>HTML5 的 canvas 元素使用 JavaScript 在网页上绘制图像。</td>
+        </tr>
+    </tbody>
+</table><hr>
+<h2>参考阅读</h2>
+<p>HTML&nbsp;DOM 参考手册：<a href="https://www.w3cschool.cn/jsref/dom-obj-canvas.html" target="_blank">HTML&nbsp;DOM&nbsp;Canvas&nbsp;对象</a>
+</p><p><br></p></div>
+<script>
+var c=document.getElementById("myCanvas");
+var canvOK=1;
+try {c.getContext("2d");}
+catch (er) {canvOK=0;}
+if (canvOK==1)
+	{
+	var ctx=c.getContext("2d");
+	ctx.fillStyle="#FF0000";
+	ctx.fillRect(20,20,100,50);
+	
+	var grd=ctx.createLinearGradient(140,20,240,70);
+    grd.addColorStop(0,"black");
+    grd.addColorStop(1,"white");
+    ctx.fillStyle=grd;
+    ctx.fillRect(140,20,100,50);
+    
+    var grd2=ctx.createLinearGradient(20,90,120,90);
+    grd2.addColorStop(0,"black");
+    grd2.addColorStop("0.3","magenta");
+    grd2.addColorStop("0.5","blue");
+    grd2.addColorStop("0.6","green");
+    grd2.addColorStop("0.8","yellow");
+    grd2.addColorStop(1,"red");
+    ctx.fillStyle=grd2;
+    ctx.fillRect(20,90,100,50);
+    
+    ctx.font="30px Verdana";
+    var grd3=ctx.createLinearGradient(140,20,240,90);
+    grd3.addColorStop(0,"black");
+    grd3.addColorStop("0.3","magenta");
+    grd3.addColorStop("0.6","blue");
+    grd3.addColorStop("0.8","green");
+    grd3.addColorStop(1,"red");
+    ctx.strokeStyle=grd3;
+    ctx.strokeText("Smile!",140,120); 
+	}
+
+var c=document.getElementById("myCanvas2");
+var canvOK=1;
+try {c.getContext("2d");}
+catch (er) {canvOK=0;}
+if (canvOK==1)
+	{
+	var ctx=c.getContext("2d");
+	ctx.moveTo(0,0);
+	ctx.lineTo(200,100);
+	ctx.stroke();
+	}
+
+
+var c=document.getElementById("myCanvas3");
+var canvOK=1;
+try {c.getContext("2d");}
+catch (er) {canvOK=0;}
+if (canvOK==1)
+	{
+	var ctx=c.getContext("2d");
+	ctx.beginPath();
+	ctx.arc(95,50,40,0,2*Math.PI);
+	ctx.stroke();
+	}
+var c=document.getElementById("myCanvas4");
+var canvOK=1;
+try {c.getContext("2d");}
+catch (er) {canvOK=0;}
+if (canvOK==1)
+	{
+    var ctx=c.getContext("2d");
+    ctx.font="30px Arial";
+    ctx.fillText("Hello World",10,50);
+	}
+
+
+var c=document.getElementById("myCanvas5");
+var canvOK=1;
+try {c.getContext("2d");}
+catch (er) {canvOK=0;}
+if (canvOK==1)
+	{
+    var ctx=c.getContext("2d");
+    ctx.font="30px Arial";
+    ctx.strokeText("Hello World",10,50);
+	}
+
+var c=document.getElementById("myCanvas6");
+var canvOK=1;
+try {c.getContext("2d");}
+catch (er) {canvOK=0;}
+if (canvOK==1)
+	{
+    var ctx=c.getContext("2d");
+    var grd=ctx.createLinearGradient(0,0,200,0);
+    grd.addColorStop(0,"red");
+    grd.addColorStop(1,"white");
+    ctx.fillStyle=grd;
+    ctx.fillRect(10,10,150,80);
+	}
+
+var c=document.getElementById("myCanvas7");
+var canvOK=1;
+try {c.getContext("2d");}
+catch (er) {canvOK=0;}
+if (canvOK==1)
+	{
+    var ctx=c.getContext("2d");
+    // Create gradient
+    var grd=ctx.createRadialGradient(75,50,5,90,60,100);
+    grd.addColorStop(0,"red");
+    grd.addColorStop(1,"white");
+    // Fill with gradient
+    ctx.fillStyle=grd;
+    ctx.fillRect(10,10,150,80);
+	}
+
+var c=document.getElementById("myCanvas8");
+var canvOK=1;
+try {c.getContext("2d");}
+catch (er) {canvOK=0;}
+if (canvOK==1)
+	{
+    var ctx=c.getContext("2d");
+    var img=document.getElementById("scream");
+    ctx.drawImage(img,10,10);
+	}
+	</script>
+<div style="clear:both"></div>
+</div>
+<!--控制本地字体主题样式-->
+<script type="text/javascript">
+var tempFontsize = $.cookie("fontsize");
+if (tempFontsize != undefined) {
+$("#pro-mian").addClass(tempFontsize);
+}
+</script>
+<!--我要赞赏-->
+<div class="project-sq"></div>
+<!--我要赞赏结束-->
+<!--我要评价-->
+<div id="evaluate-box"><span id="evaluates">以上内容是否对您有帮助：</span><span class="star_score"></span></div>
+<!--评价结束-->
+<div class="content-links">
+<div class="previous-link">← <a href="/html5/html5-new-element.html" title="上一篇：HTML5 新元素">HTML5 新元素</a></div>
+<div class="next-link"><a href="/html5/html5-svg.html" title="下一篇：HTML5 内联 SVG">HTML5 内联 SVG</a> →</div>
+</div>
+<!--练习、出题、写笔记-->
+<div class="project-operation">
+<div class="pull-right">
+<a href="javascript:;" class="op-btn note-btn" onclick="openNote()"><i class="icon-pencil"></i>写笔记</a>
+</div>
+</div>
+<!--横版广告放置-->
+<div class="abox-item">    <div class="abox-content">    </div></div> 
+<!-- 笔记列表 -->
+<div class="notelist-box" style="display:none">
+<div class="notelist-head" onclick="openNoteList(this)">
+<span class="notelist-title">精选笔记</span>
+<i class="icon-circle-arrow-up"></i>
+</div>
+<div class="notelist-content" id="notelist_content" style="display: none;" >
+</div>
+</div>
+<!--相关推荐|wiki推荐-->
+<div class="maylike">
+<h2 class="project-maylike-info">您可能还喜欢：</h2>
+<ul class="project-maylike-ul">
+<li><a href="/html5/html-5-webstorage.html" title="HTML5 Web 存储">HTML5 Web 存储</a></li>
+<li><a href="/html5/html-5-video.html" title="HTML5 视频">HTML5 视频</a></li>
+<li><a href="/html5/html5-ref-standardattributes.html" title="HTML5 标准属性">HTML5 标准属性</a></li>
+<li><a href="/html5/html-5-form-elements.html" title="HTML5 表单元素">HTML5 表单元素</a></li>
+<li><a href="/html5/html-5-form-input-types.html" title="HTML5 Input 类型">HTML5 Input 类型</a></li>
+<li><a href="/html5/html-5-audio.html" title="HTML5 音频">HTML5 音频</a></li>
+<li><a href="/html5/html-5-intro.html" title="HTML5 简介">HTML5 简介</a></li>
+<li><a href="/html5/de521qf0.html" title="HTML5 表单">HTML5 表单</a></li>
+</ul>
+</div>
+<!--相关推荐|wiki推荐 结束-->
+</div>
+<div class="navigation-box">
+<a href="/html5/html5-new-element.html" title="上一篇：HTML5 新元素" class="navigation navigation-prev"><i class="icon-chevron-left"></i></a>
+<a href="/html5/html5-svg.html" title="下一篇：HTML5 内联 SVG" class="navigation navigation-next"><i class="icon-chevron-right"></i></a>
+</div>
+  </div>
+<div id="pro-footer">
+<div class="s-footer">
+<div class="s-footer-bottom">
+<p>Copyright &copy; 2019 <a href="//www.w3cschool.cn" title="w3cschool">w3cschool.cn </a> All Rights Reserved. </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="toolbar">
+<div class="tool onlinenote" data-module="page">
+<div class="tool-inner">
+<div class="tool-icon"></div>
+<div>在线笔记</div>
+</div>
+</div>
+<div class="tool app">
+<div class="tool-inner">
+<div class="tool-icon"></div>
+<div>App下载</div>
+</div>
+<div class="tool-popover">
+<div class="tool-popover-inner">
+<div class="img"><img src="//7n.w3cschool.cn/statics/images/w3c/app-qrcode2.png" alt="App下载" width="140" height="140"></div>
+<p>扫描二维码</p>
+<p>下载编程狮App</p>
+</div>
+</div>
+</div>
+<div class="tool wechat">
+<div class="tool-inner">
+<div class="tool-icon"></div>
+<div>公众号</div>
+</div>
+<div class="tool-popover">
+<div class="tool-popover-inner">
+<div class="img"><img src="//7n.w3cschool.cn/statics/images/w3c/mp-qrcode.png" alt="微信公众号" width="140" height="140"></div>
+<p>编程狮公众号</p>
+</div>
+</div>
+</div>
+<div class="tool feedback" data-module="page" onclick="showDialogBox(this)">
+<div class="tool-inner">
+<div class="tool-icon"></div>
+<div>意见反馈</div>
+</div>
+</div>
+<div class="tool backtop" data-visibility="50">
+<div class="tool-inner">
+<div class="tool-icon"></div>
+<div>返回顶部</div>
+</div>
+</div>
+</div>
+
+<div class="feedback-Box" style="display: none;">
+<div class="feedback-Box-content" style="width: 800px;">
+<div class="feedback-Box-top">
+<span class="feedback-Box-title">意见反馈</span>
+<span onclick="closeDialogBox(this)" class="feedback-Box-close">X</span>
+</div>
+<ul>
+<li class="feedback-box" >
+<div id="feedbackRadio" type="radio" name="feedbackType" data-value="0" style=""> 意见反馈：</div>
+<textarea  name="reportInfo" id="elmaaa" class="feedback-text" rows="15" placeholder="请留下您宝贵的意见反馈吧。" style="width: 700px;height:200px;overflow:auto;" ></textarea>
+<p>联系方式：</p>
+<input type="text" placeholder="留个联系方式呗..." name="reportAddress" class="radio-text" id="reportAddress" style="height: 30px;width: 200px;">
+</li>
+</ul>
+<button class="search-s" onclick="dialogSubmit(this)" id="reportSubmit">提交</button>
+</div>
+</div>
+
+<div id="note-start" style="display: none"></div>
+
+<div id="detail" style="display:none;">
+<div id="note-Dialog" class="note-Dialog" >
+<div class="note-Box-content" >
+<div class="ntitlebox">
+<input type="text" placeholder="" name="ntitle" class="ntitle" id="ntitle" >
+</div>
+<div id="editorarea">
+<textarea  name="ncontent" id="ncontent" class="ncontent" rows="15" placeholder="" style="width: 700px;height:200px;overflow:auto;" ></textarea>
+</div>
+<p></p>
+<a class="closenote" href="/my/note" target="_blank" >查看完整版笔记</a>
+<button class="notesubmit"  id="notesubmit">保存</button>
+<button class="notebtn pull-right closenote" style="margin:20px 0" >关闭</button>
+</div>
+</div>
+</div>
+
+<div class="report-Box" style="display: none;">
+<div class="report-Box-content">
+<div class="report-Box-top">
+<span class="report-Box-title">违规举报</span>
+<span onclick="closeReportBox(this)" class="report-Box-close">X</span>
+</div>
+<ul>
+<li class="radio-box">
+<input id="reportRadio" type="radio" name="reportType" value="1" checked="checked" /> 广告等垃圾信息
+</li>
+<li class="radio-box">
+<input id="reportRadio" type="radio" name="reportType" value="2" /> 不友善内容
+</li>
+<li class="radio-box">
+<input id="reportRadio" type="radio" name="reportType" value="3" /> 违反法律法规的内容
+</li>
+<li class="radio-box">
+<input id="reportRadio" type="radio" name="reportType" value="4" /> 不宜公开讨论的政治内容
+</li>
+<li class="radio-box" onclick="reportOther(this)">
+<input id="reportRadio" type="radio" name="reportType" value="0" /> 其他
+<input type="text" class="radio-text" name="reportInfo" value="" placeholder="请填写您的举报理由。">
+</li>
+</ul>
+<button class="search-s" onclick="reportSubmit(this)" id="reportSubmit">提交</button>
+</div>
+</div>
+<div class="widget-body" data-type="project"></div>
+<div class="pay-area" data-static="//www.w3cschool.cn/statics"></div>
+<div class="dialog-area"></div>
+<script src="//www.w3cschool.cn/plugins/ueditor/third-party/SyntaxHighlighter/shCore.min.js" type="text/javascript"></script>
+<script src="//www.w3cschool.cn/statics/js/commonfooter.js?v2.4" type="text/javascript"></script>
+<script src="//www.w3cschool.cn/statics/js/project.view.js" type="text/javascript"></script>
+<script src="//www.w3cschool.cn/statics/core/ajaxdo.core.js" type="text/javascript"></script>
+<script src="//www.w3cschool.cn/statics/js/paypraise.js" type="text/javascript"></script>
+<script>
+var kn = {
+kename:'q2ybmfle',
+pename:'html5',
+ismenu:'0',
+ktitle:'HTML5 Canvas',
+ktype:'kn',
+original:'1',
+uid:'0',
+};
+var book = {
+pename:'html5',
+bookname:'HTML5教程'
+};
+
+var Gvar = {
+activityflag: ''
+};
+function isProjectLike(){
+
+if(kn.uid == '' || kn.uid == '0'){
+toastr.warning("您还未登录,请先登录!",'',{"positionClass": "toast-top-center"});
+return;
+}
+$.ajaxdo({
+url: "/project/islike/html5.html",
+type: "post",
+dataType: 'json',
+data: {},
+sync: false,
+success: function (data) {
+if (data.statusCode == 200) {
+$('.avatar-list').find('p').remove();
+$('.avatar-list').append('<a href="javascript:;" title="' + data.data + '"><img src="/attachments/avatar2/avatar_' + data.data + '.jpg" title=""></a>');
+var likecount = $("#likecount").text() * 1 + 1;
+$("#likecount").html(likecount);
+$(".btn-thumbs-up i").attr('class','icon-thumbs-up isdone');
+$("#likestatus").html('已赞');
+toastr.success(data.message,'',{"positionClass": "toast-top-center"});
+} else {
+toastr.warning(data.message,'',{"positionClass": "toast-top-center"});
+}
+}
+});
+}
+function isProjectStar(){
+if(kn.uid == '' || kn.uid == '0'){
+toastr.warning("您还未登录,请先登录!",'',{"positionClass": "toast-top-center"});
+return;
+}
+var type = $('#hbstar').attr('data-type');
+$.ajaxdo({
+url: "/project/star/html5.html",
+type: "post",
+dataType: 'json',
+data: {},
+success: function (data) {
+if(data.statusCode == 200){
+if (type == 'star') {
+$('#hbstar').html('<i class="icon-star isdone"></i><span>已收藏</span>');
+$('#hbstar').attr('data-type','rstar');
+toastr.success(data.message,'',{"positionClass": "toast-top-center"});
+} else {
+$('#hbstar').html('<i class="icon-star"></i><span>收藏</span>');
+$('#hbstar').attr('data-type','star');
+toastr.success(data.message,'',{"positionClass": "toast-top-center"});
+}
+}else{
+toastr.warning(data.message,'',{"positionClass": "toast-top-center"});
+}
+}
+});
+}
+$(function(){
+
+if(kn.kename != ''){
+ var lastviewUrl = '//'+window.location.host+'/'+kn.pename+'/'+kn.kename+'.html';
+localStorage.setItem("lastview_"+kn.pename, lastviewUrl);
+}
+
+$(document).on("click",function(){
+$(".docblur").hide();
+});
+
+$(".onlinenote").show();
+
+if(location.hash !== ""){ // 修复锚点定位失效的问题
+setTimeout(function(){
+location.href=location.hash;
+},300);
+}
+
+if(Gvar.activityflag > 0){ // 开启了活动
+$.ajax({
+url:"/getActivity",
+type:"get",
+dataType:"json",
+success:function(msg){
+function loadad(content){
+var tpl = '<div class="activiey-area">'+
+'<div class="activiey-bg"></div>'+
+'<div class="activiey-main">'+
+'<span class="close-btn"></span> <div style="max-height:500px;max-width:570px;">'+content+'</div></div>'+
+'</div>';
+
+$("body").append(tpl);
+
+$(".activiey-main .close-btn").on("click",function(){
+$(".activiey-area").hide();
+});
+
+}
+if(msg.statusCode < 300){
+console.log(msg.data);
+// 写入cookie
+$.cookie("activity_showed", 1);
+loadad(msg.data.wincontent);
+toastr.success(msg.message);
+}else{
+toastr.warning(msg.message);
+}
+}
+});
+}
+var kename = kn.kename;
+var fid    = "15420";
+var uid = '0';
+$(document).on('keyup',function(e){
+var keyCode = e.keyCode;
+var prev,next;
+if(keyCode == 37){ // 上一篇
+prev = $(".navigation-prev");
+if(prev.length > 0 && !prev.is(":hidden")){
+location.href = prev.attr("href");
+}
+}
+if(keyCode == 39){ // 下一篇
+next = $(".navigation-next");
+if(next.length > 0 && !next.is(":hidden")){
+location.href = next.attr("href");
+}
+}
+});
+/*开启计时 准备记录积分*/
+var vcreditfull = $.cookie('ypre_vcreditfull');
+//console.log(vcreditfull);
+if(vcreditfull == undefined && uid != '0' && uid != ''){
+setTimeout(function(){
+$.ajax({
+url:"/project/setViewCredit",
+type:"post",
+data:{kename:kename},
+dataType:"json",
+success:function(msg){
+var statusCode = {
+'200':'success',
+'400':'warning',
+};
+var toastrType = statusCode[msg.statusCode];
+if(msg.statusCode == 300 || msg.statusCode == 400){
+return;
+}
+toastr[toastrType](msg.message);
+}
+});
+},30000);
+}
+hljs.initHighlightingOnLoad();//高亮代码
+window._bd_share_config={"common":{"bdSnsKey":{},bdPopupOffsetTop:"5"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/plugins/baidushare/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+});
+$(".toggle-dropdown").on('click',function(e){
+e.stopPropagation();
+if ($(this).next().is(":hidden")){
+$(this).next().show();    
+}else{
+$(this).next().hide();     
+}
+});
+
+$(".set-dropdown-menu").on("click",function(e){
+e.stopPropagation();
+});
+function getviewkn(){
+var usernamestr ='';
+$.ajax({
+url:"/my/knowledge/getViewkn?pename="+book.pename,
+dataType:"json",
+success:function(msg){
+var objli,objtt;
+for(var p in msg){
+objli = $("#nestable_handbook").find(".dd-item[data-id='"+msg[p]['kename']+"']");
+if(objli.attr("ismenu") != 1){
+objli.addClass("readed").find("a").attr("title","上次浏览时间:("+msg[p]['lasttime']+")");
+}
+}
+}
+}); 
+}
+function openNote(){
+$(".onlinenote").trigger("click");
+}
+</script>
+<script type="text/javascript">
+  // 如果需要给后台返值的话，返回 $(".star_score span.select").size()的值即可。
+$(function(){      
+//生成5个星星
+for(var i=0;i<5;i++){
+var _html = '<span title="'+parseInt(i+1)+'分"></span>';
+$(".star_score").append(_html);
+}
+//鼠标滑过，星星背景图片改成选中图片
+$(".star_score span").hover(function(){
+var index = $(this).index();
+for(var i = 0; i <=index; i++){
+$(".star_score span").eq(i).addClass("active");
+}
+//鼠标移除去掉激活效果
+},function(){
+$(".star_score span").removeClass("active");
+});
+var tourist =- parseInt(10000000*Math.random());//给游客随机id
+//星星点击，这颗星星之前的所有星星加上选中效果
+$(".star_score span").on("click",function(){
+var x = $(this).index();
+$(".star_score span").removeClass('select');
+for (var i = 0; i <= x; i++) {
+$(".star_score span").eq(i).addClass('select');
+};
+evaluate(x+1,tourist);
+})
+})
+function evaluate(scores,tourist){
+var pid   = '50';
+var aid   = '20210';
+$.ajax({
+url:"/index/evaluate",
+type:"post",
+data:{
+score : scores,
+pid   : pid, 
+aid   : aid,
+uid   : tourist,
+title : book.bookname,
+mintitle:kn.ktitle,
+},
+dataType:"json",
+success:function(msg){
+if(msg.statusCode==200){
+toastr.success(msg.message);
+}
+}
+});
+}
+function openNoteList(obj){
+var display=$('#notelist_content').css('display');
+if(display=='none'){
+$(obj).children('i').addClass('icon-circle-arrow-up');
+$(obj).children('i').removeClass('icon-circle-arrow-down');
+$('#notelist_content').show();
+}else{
+$(obj).children('i').addClass('icon-circle-arrow-down');
+$(obj).children('i').removeClass('icon-circle-arrow-up');
+$('#notelist_content').hide();
+} 
+}
+getNotelist();
+//笔记点赞
+function islikeNote(obj,kmid){
+toastr.warning('请先登录');
+}
+  //   function getNotelist(){
+  //    $.ajax({
+// url:"/index/getNotelist",
+// type:"post",
+// data:{
+// pename:book.pename,
+// kename:kn.kename,
+// },
+// dataType:"json",
+// success:function(msg){
+//  var ob = eval(msg.data.notelist);
+//  if(ob.length>0){
+//     $('#notelist_content').show();
+//       $('.notelist-box').show();
+//    var str='<ul>';
+ //              for(var o in ob){  
+ //                str+='<li class="notelist-item"><div class="notelist-author"><a href="/u/'+ob[o].uid+'"><img src="/attachments/avatar2/avatar_'+ob[o].uid+'.jpg" class="avatar"><span class="name">'+ob[o].creator+'</span></a></div><div class="notelist-wrap content-intro">'+ob[o].kcontent+'</div></li>';
+ //              }
+ //              str+='</ul>';  
+ //              $("#notelist_content").html(str);
+  //                 AjaxDo.bindDialog();
+//  }else{
+//   $('.notelist-box').hide();
+//  }
+//    }
+// });
+  //   }
+</script>
+</body>
+</html>
