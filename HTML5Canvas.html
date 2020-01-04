@@ -91,39 +91,8 @@ var domain  = '//www.w3cschool.cn';
 </script>
 <!--header end-->
  
-<div id="m-splitter">
-
-
-<div id="pro-mian" class="main-container font0">
 <div class="project-body">
-<div class="portlet-title pro-title">
-<div class="set-btn-group font-settings pull-left">
-<a href="javascript:;" class="expand-collapse-trigger" title="折叠/展开"><i class="icon-th-list"></i></a>
-<a href="javascript:;" class="toggle-dropdown" title="视觉主题设置"><i class="icon-font"></i></a>
-<div class="set-dropdown-menu docblur" style="display:none;">
-<div class="dropdown-caret">
-<span class="caret-outer"></span>
-<span class="caret-inner"></span>
-</div>
-<div class="buttons font-opt">
-<button class="button size font-reduce" font="reduce" title="缩小字体">A</button>
-<button class="button size font-enlarge" font="enlarge" title="放大字体">A</button>
-</div>
-<div class="buttons bg-color">
-<button class="button theme" color="color-theme-white" title="默认模式">默认</button>
-<button class="button theme" color="color-theme-sepia" title="护眼模式">护眼</button>
-<button class="button theme" color="color-theme-night" title="夜间模式">夜间</button>
-</div>
-</div>
-</div>
-<div class="kn-btn-group pull-right">            
-<span id="content-head-viewcount" class="viewcount-btn"><i class="icon-eye-open"></i> <span>阅读(230.2k)</span></span>
-<a id="knstar" href="javascript:;" onclick="isstar()" data-type="star"><i class="icon-bookmark-empty"></i> <span>书签</span></a>
-<a class="btn-thumbs-up" href="javascript:;" onclick="islike()"><i class="icon-thumbs-up"></i> <span id="likestatus">赞</span>(<span id="likecount">71</span>)</a>
-<a href="javascript:;" title="分享" class="share-btn  popup_more bdsharebuttonbox" data-cmd="more" data-bd-bind="1472196006351"><i class="icon-share"></i> 分享</a>
-<a href="/edit/html5/q2ybmfle" rel="nofollow"><i class="icon-edit"></i> <span>我要纠错</span></a>
-</div>
-</div>
+
 <div id="pro-mian-header">
 <div class="content-top">
 <h1>HTML5 Canvas</h1>
@@ -586,84 +555,21 @@ $("#pro-mian").addClass(tempFontsize);
 </div>
 <!--相关推荐|wiki推荐 结束-->
 </div>
-<div class="navigation-box">
-<a href="/html5/html5-new-element.html" title="上一篇：HTML5 新元素" class="navigation navigation-prev"><i class="icon-chevron-left"></i></a>
-<a href="/html5/html5-svg.html" title="下一篇：HTML5 内联 SVG" class="navigation navigation-next"><i class="icon-chevron-right"></i></a>
-</div>
-  </div>
 
-</div>
 </div>
 
 
 
-<div class="feedback-Box" style="display: none;">
-<div class="feedback-Box-content" style="width: 800px;">
-<div class="feedback-Box-top">
-<span class="feedback-Box-title">意见反馈</span>
-<span onclick="closeDialogBox(this)" class="feedback-Box-close">X</span>
-</div>
-<ul>
-<li class="feedback-box">
-<div id="feedbackRadio" type="radio" name="feedbackType" data-value="0" style=""> 意见反馈：</div>
-<textarea name="reportInfo" id="elmaaa" class="feedback-text" rows="15" placeholder="请留下您宝贵的意见反馈吧。" style="width: 700px;height:200px;overflow:auto;"></textarea>
-<p>联系方式：</p>
-<input type="text" placeholder="留个联系方式呗..." name="reportAddress" class="radio-text" id="reportAddress" style="height: 30px;width: 200px;">
-</li>
-</ul>
-<button class="search-s" onclick="dialogSubmit(this)" id="reportSubmit">提交</button>
-</div>
-</div>
 
-<div id="note-start" style="display: none"></div>
 
-<div id="detail" style="display:none;">
-<div id="note-Dialog" class="note-Dialog">
-<div class="note-Box-content">
-<div class="ntitlebox">
-<input type="text" placeholder="" name="ntitle" class="ntitle" id="ntitle">
-</div>
-<div id="editorarea">
-<textarea name="ncontent" id="ncontent" class="ncontent" rows="15" placeholder="" style="width: 700px;height:200px;overflow:auto;"></textarea>
-</div>
-<p></p>
-<a class="closenote" href="/my/note" target="_blank">查看完整版笔记</a>
-<button class="notesubmit" id="notesubmit">保存</button>
-<button class="notebtn pull-right closenote" style="margin:20px 0">关闭</button>
-</div>
-</div>
-</div>
 
-<div class="report-Box" style="display: none;">
-<div class="report-Box-content">
-<div class="report-Box-top">
-<span class="report-Box-title">违规举报</span>
-<span onclick="closeReportBox(this)" class="report-Box-close">X</span>
-</div>
-<ul>
-<li class="radio-box">
-<input id="reportRadio" type="radio" name="reportType" value="1" checked="checked"> 广告等垃圾信息
-</li>
-<li class="radio-box">
-<input id="reportRadio" type="radio" name="reportType" value="2"> 不友善内容
-</li>
-<li class="radio-box">
-<input id="reportRadio" type="radio" name="reportType" value="3"> 违反法律法规的内容
-</li>
-<li class="radio-box">
-<input id="reportRadio" type="radio" name="reportType" value="4"> 不宜公开讨论的政治内容
-</li>
-<li class="radio-box" onclick="reportOther(this)">
-<input id="reportRadio" type="radio" name="reportType" value="0"> 其他
-<input type="text" class="radio-text" name="reportInfo" value="" placeholder="请填写您的举报理由。">
-</li>
-</ul>
-<button class="search-s" onclick="reportSubmit(this)" id="reportSubmit">提交</button>
-</div>
-</div>
-<div class="widget-body" data-type="project"></div>
-<div class="pay-area" data-static="//www.w3cschool.cn/statics"></div>
-<div class="dialog-area"></div>
+
+
+
+
+
+
+
 <script src="//www.w3cschool.cn/plugins/ueditor/third-party/SyntaxHighlighter/shCore.min.js" type="text/javascript"></script>
 <script src="//www.w3cschool.cn/statics/js/commonfooter.js?v2.4" type="text/javascript"></script>
 <script src="//www.w3cschool.cn/statics/js/project.view.js" type="text/javascript"></script>
