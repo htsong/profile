@@ -12,7 +12,7 @@ born in 1976.
     <title>W3Cschool(w3cschool.cn)</title> 
     </head>
     <body>
-    <form action="/statics/demosource/demo-form.php" method="get">
+    <form action="./test.html" method="get">
     First name: <input type="text" name="fname"><br>
     Last name: <input type="text" name="lname"><br>
     <button type="submit" value="提交">提交</button>
